@@ -1,8 +1,8 @@
 {
-  "name": "koothrappali-backend",
-  "title": "Koothrapali Backend",
+  "name": "es6 boilerplate",
+  "title": "es6 boilerplate",
   "version": "0.0.1",
-  "description": "Koothrappali API for AWS",
+  "description": "es6 boilerplate",
   "scripts": {
     "start": "node dist",
     "prestart": "npm run build",

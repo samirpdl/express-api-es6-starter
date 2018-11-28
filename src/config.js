@@ -2,7 +2,7 @@ import { version, title, description } from '../package.json';
 
 const config = {
   app: {
-    name: title || 'Koothrapali',
+    name: title || 'es6-starter-kit',
     description: description || '',
     version: version || '0.0.0',
     port: process.env.PORT || 8080,
