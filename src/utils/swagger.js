@@ -1,14 +1,16 @@
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 
+import config from '../config';
+
 /**
  * Swagger definition.
  */
 const swaggerDefinition = {
   info: {
-    title: process.env.APP_NAME,
-    version: process.env.APP_VERSION,
-    description: process.env.APP_DESCRIPTION
+    title: config.app.name,
+    version: config.app.version,
+    description: config.app.description
   },
   basePath: '/api'
 };

@@ -1,14 +1,13 @@
 import fs from 'fs';
 import winston, { format } from 'winston';
 
+import config from '../config';
+
 import 'winston-daily-rotate-file';
 
-const LOG_DIR = 'logs';
-const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
-
 // Create log directory if it does not exist
-if (!fs.existsSync(LOG_DIR)) {
-  fs.mkdirSync(LOG_DIR);
+if (!fs.existsSync(config.log.dir)) {
+  fs.mkdirSync(config.log.dir);
 }
 
 /**
@@ -18,15 +17,15 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({
       format: format.combine(format.colorize(), format.simple()),
-      level: 'info'
+      level: config.log.level
     }),
     new winston.transports.DailyRotateFile({
       format: format.combine(format.timestamp(), format.json()),
-      maxFiles: '14d',
-      level: LOG_LEVEL,
-      dirname: LOG_DIR,
-      datePattern: 'YYYY-MM-DD',
-      filename: '%DATE%-debug.log'
+      maxFiles: config.log.maxDays,
+      level: config.log.level,
+      dirname: config.log.dir,
+      datePattern: config.log.datePattern,
+      filename: config.log.filename
     })
   ]
 });
